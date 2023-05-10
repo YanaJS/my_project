@@ -1,0 +1,144 @@
+.container {
+  background-color: blanchedalmond;
+  border-radius: 22px;
+  border: 1px solid #dadde1;
+  padding: 14px;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+h1 {
+  text-align: center;
+  color: antiquewhite;
+}
+
+.date {
+  position: relative;
+  font-size: 20px;
+  list-style: none;
+  font-style: normal;
+  margin: 25px 0 0 30px;
+  padding: 0px;
+  line-height: 23px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  color: rgb(83, 62, 62);
+}
+
+.search {
+  text-align: center;
+  margin-top: 12px;
+  padding: 0;
+  border: none;
+}
+
+.current-city {
+  text-align: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.city {
+  display: block;
+  margin: 0 auto;
+  border: none;
+  padding: 6px;
+  border-radius: 5px;
+}
+.btn-primary {
+  border: none;
+  padding: 6px;
+  padding-right: 12px;
+  border-radius: 5px;
+  margin-top: -59px;
+  margin-right: 19px;
+}
+
+.btn-success {
+  border: none;
+  padding: 6px;
+  padding-right: 12px;
+  border-radius: 5px;
+  margin-right: -500px;
+  margin-top: -59px;
+}
+
+.parameters {
+  text-align: center;
+  list-style: none;
+  margin-right: 45px;
+  padding-top: 56px;
+  font-size: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-style: italic;
+  color: rgb(83, 62, 62);
+  vertical-align: baseline;
+}
+.hourly {
+  list-style: none;
+  text-align: center;
+  color: blue;
+}
+
+.per-hour {
+  color: darkgray;
+}
+.daily {
+  list-style: none;
+  text-align: center;
+  color: brown;
+}
+
+.half-cloudy {
+  width: 150px;
+  margin-top: -22px;
+}
+.per-day {
+  color: cadetblue;
+}
+
+.city-name-area {
+  font-size: 35px;
+  font-weight: bold;
+  padding: 0;
+  margin-top: 12px;
+}
+
+h5 {
+  text-align: center;
+}
+
+a {
+  text-align: center;
+  text-decoration: none;
+}
+
+.cloudy {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: -12px;
+}
+.temp {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.c-temp {
+  color: rgb(65, 53, 53);
+  font-size: 72px;
+  font-weight: bold;
+  line-height: 1;
+  margin-left: 15px;
+}
+
+.units {
+  position: relative;
+  top: -37px;
+  margin-left: 1px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
