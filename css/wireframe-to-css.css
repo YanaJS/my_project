@@ -142,6 +142,7 @@ a {
 .capitalize {
   text-transform: capitalize;
 }
+
 .closureSentence {
   text-align: left;
   font-size: 14px;
@@ -149,4 +150,3 @@ a {
   line-height: 1.5;
   margin-left: 280px;
 }
-

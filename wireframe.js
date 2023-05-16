@@ -69,14 +69,19 @@ searchForm.addEventListener("submit", search);
 function getCurrentTemperature(response) {
   let api_description = response.data.weather[0].description;
   let api_temp = Math.round(response.data.main.temp);
+  let api_icon = response.data.weather[0].icon;
+  let api_icon_alt = response.data.weather[0].description;
   let api_city = response.data.name;
   let api_wind = response.data.wind.speed;
   let api_humidity = response.data.main.humidity;
   let api_sunrise = response.data.sys.sunrise;
   let api_sunset = response.data.sys.sunset;
+  console.log(response.data.weather);
   initCurrentCityArea(
     api_description,
     api_temp,
+    api_icon,
+    api_icon_alt,
     api_city,
     api_wind,
     api_humidity,
@@ -88,6 +93,8 @@ function getCurrentTemperature(response) {
 function initCurrentCityArea(
   weatherDescription,
   temperature,
+  icon,
+  icon_alt,
   city,
   wind,
   humidity,
@@ -98,6 +105,12 @@ function initCurrentCityArea(
   description.innerHTML = weatherDescription;
   let temp = document.querySelector("#temp");
   temp.innerHTML = temperature;
+  let icon_ele = document.querySelector("#icon");
+  icon_ele.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${icon}@2x.png`
+  );
+  icon_ele.setAttribute("alt", `${icon_alt}`);
   let city_ele = document.querySelector("#city-name");
   city_ele.innerText = city;
   let getWind = Math.round(wind);
@@ -157,8 +170,7 @@ function error(err) {
 let btnLocation = document.querySelector("#current-location");
 btnLocation.addEventListener("click", getCurrentCoords);
 
-
-
+//My approach:
 function cToF(event) {
   let cTemp = document.querySelector("#temp").innerText;
   cTemp = Number(cTemp);
@@ -170,6 +182,19 @@ function cToF(event) {
 let tempInF = document.querySelector("#fahrenheit");
 tempInF.addEventListener("click", cToF);
 
+//or:
+/*
+function cToF(event) {
+  event.preventDefault();
+  let fTemp = document.querySelector("#temp");
+  let temperature = fTemp.innerHTML;
+  temperature = Number(temperature);
+  fTemp.innerHTML = Math.round((temperature * 9) / 5 + 32);
+}
+
+let fahrenheitTemp = document.querySelector("#fahrenheit");
+fahrenheitTemp.addEventListener("click", cToF);
+*/
 
 function fToC(event) {
   let fTemp = document.querySelector("#temp").innerText;
