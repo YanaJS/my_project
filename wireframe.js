@@ -68,6 +68,7 @@ searchForm.addEventListener("submit", search);
 
 function getCurrentTemperature(response) {
   let api_description = response.data.weather[0].description;
+  //tempInCelsius = response.data.main.temp;
   let api_temp = Math.round(response.data.main.temp);
   let api_icon = response.data.weather[0].icon;
   let api_icon_alt = response.data.weather[0].description;
@@ -76,7 +77,6 @@ function getCurrentTemperature(response) {
   let api_humidity = response.data.main.humidity;
   let api_sunrise = response.data.sys.sunrise;
   let api_sunset = response.data.sys.sunset;
-  console.log(response.data.weather);
   initCurrentCityArea(
     api_description,
     api_temp,
@@ -172,37 +172,31 @@ btnLocation.addEventListener("click", getCurrentCoords);
 
 //My approach:
 function cToF(event) {
+  event.preventDefault();
   let cTemp = document.querySelector("#temp").innerText;
+  tempInC.classList.remove("active");
+  tempInF.classList.add("active");
   cTemp = Number(cTemp);
   let cToFahr = (cTemp * 9) / 5 + 32;
   cToFahr = Math.round(cToFahr);
   document.querySelector("#temp").innerHTML = `${cToFahr}`;
 }
 
-let tempInF = document.querySelector("#fahrenheit");
-tempInF.addEventListener("click", cToF);
-
-//or:
-/*
-function cToF(event) {
-  event.preventDefault();
-  let fTemp = document.querySelector("#temp");
-  let temperature = fTemp.innerHTML;
-  temperature = Number(temperature);
-  fTemp.innerHTML = Math.round((temperature * 9) / 5 + 32);
-}
-
-let fahrenheitTemp = document.querySelector("#fahrenheit");
-fahrenheitTemp.addEventListener("click", cToF);
-*/
-
 function fToC(event) {
+  event.preventDefault();
   let fTemp = document.querySelector("#temp").innerText;
+  tempInC.classList.add("active");
+  tempInF.classList.remove("active");
   fTemp = Number(fTemp);
   let fToCel = ((fTemp - 32) * 5) / 9;
   fToCel = Math.round(fToCel);
   document.querySelector("#temp").innerHTML = `${fToCel}`;
 }
+
+//let tempInCelsius = null;
+
+let tempInF = document.querySelector("#fahrenheit");
+tempInF.addEventListener("click", cToF);
 
 let tempInC = document.querySelector("#celsius");
 tempInC.addEventListener("click", fToC);
