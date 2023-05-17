@@ -170,7 +170,6 @@ function error(err) {
 let btnLocation = document.querySelector("#current-location");
 btnLocation.addEventListener("click", getCurrentCoords);
 
-//My approach:
 function cToF(event) {
   event.preventDefault();
   let cTemp = document.querySelector("#temp").innerText;
