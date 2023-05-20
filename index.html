@@ -68,34 +68,47 @@
           </ul>
         </div>
       </div>
-      <!--
-      <div class="row">
-        <div class="col-6">
-          <h5 class="per-hour">Hourly forecast</h5>
+      <div class="weather-forecast">
+        <div class="row">
           <hr />
-          <ul class="hourly">
-            <li>16:00 🌥 16°</li>
-            <li>17:00 🌥 15°</li>
-            <li>18:00 🌤 14°</li>
-            <li>19:00 🌤 13°</li>
-            <li>20:00 🌩 12°</li>
-          </ul>
-          <a href="#">-More-</a>
-        </div>
-        <div class="col-6">
-          <h5 class="per-day">5-days forecast</h5>
-          <hr />
-          <ul class="daily">
-            <li>Today 🌥 16°/8°</li>
-            <li>Thursday 🌥 18°/11°</li>
-            <li>Friday 🌥 16°/7°</li>
-            <li>Saturday 🌥 19°/15°</li>
-            <li>Sunday 🌥 21°/17°</li>
-          </ul>
-          <a href="#">-More-</a>
+          <div class="col-6">
+            <h5 class="per-hour">Hourly</h5>
+            <div class="hourly-forecast" id="forecast-by-hour">
+              <div class="col">
+                <div class="row-2">
+                  <span class="hourly-time">16:00</span>
+                  <span class="hourly-icon"
+                    ><img
+                      src="https://openweathermap.org/img/wn/04d@2x.png"
+                      alt=""
+                      width="40px"
+                  /></span>
+                  <span class="hourly-temp">16°</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <h5 class="per-day">Daily</h5>
+            <div class="daily-forecast" id="forecast-by-day">
+              <div class="col">
+                <div class="row-2">
+                  <span class="each-day">Mon</span>
+                  <span class="daily-icon"
+                    ><img
+                      src="https://openweathermap.org/img/wn/01d@2x.png"
+                      alt=""
+                      width="40px"
+                  /></span>
+                  <span class="daily-max-temp">16°</span>
+                  <span class="daily-min-tem">8°</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    --></div>
+    </div>
 
     <p class="closureSentence">
       This project was coded by<a href=""> Yana Yaman</a> and is

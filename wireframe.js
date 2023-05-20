@@ -68,7 +68,6 @@ searchForm.addEventListener("submit", search);
 
 function getCurrentTemperature(response) {
   let api_description = response.data.weather[0].description;
-  //tempInCelsius = response.data.main.temp;
   let api_temp = Math.round(response.data.main.temp);
   let api_icon = response.data.weather[0].icon;
   let api_icon_alt = response.data.weather[0].description;
@@ -151,8 +150,6 @@ function requestApiByCoords(lat, lon) {
   axios.get(weatherApiUrlByCoords).then(getCurrentTemperature);
 }
 
-requestApiByCity("Tokyo");
-
 function getCurrentCoords() {
   navigator.geolocation.getCurrentPosition(success, error);
 }
@@ -199,3 +196,58 @@ tempInF.addEventListener("click", cToF);
 
 let tempInC = document.querySelector("#celsius");
 tempInC.addEventListener("click", fToC);
+requestApiByCity("Tokyo");
+
+function getHourlyForecast(hour) {
+  let hourlyForecastElement = document.querySelector("#forecast-by-hour");
+  let hours = ["16:00", "17:00", "18:00", "19:00", "20:00"];
+  let hourlyForecastHTML = `<div class = col>`;
+  hours.forEach(function (hour) {
+    hourlyForecastHTML =
+      hourlyForecastHTML +
+      `
+     <div class="row-2">
+                  <span class="hourly-time">${hour}</span>
+                  <span class="hourly-icon"
+                    ><img
+                      src="https://openweathermap.org/img/wn/04d@2x.png"
+                      alt=""
+                      width="40px"
+                  /></span>
+                  <span class="hourly-temp">16°</span>
+                </div>
+    `;
+  });
+  hourlyForecastHTML = hourlyForecastHTML + `</div>`;
+  hourlyForecastElement.innerHTML = hourlyForecastHTML;
+  console.log(hourlyForecastHTML);
+}
+
+getHourlyForecast();
+
+function getDailyForecast(day) {
+  let dailyForecastElement = document.querySelector("#forecast-by-day");
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  let dailyForecastHTML = `<div class = col>`;
+  days.forEach(function (day) {
+    dailyForecastHTML =
+      dailyForecastHTML +
+      `
+     <div class="row-2">
+                  <span class="each-day">${day}</span>
+                  <span class="daily-icon"
+                    ><img
+                      src="https://openweathermap.org/img/wn/01d@2x.png"
+                      alt=""
+                      width="40px"
+                  /></span>
+                  <span class="daily-max-temp">16°</span>
+                  <span class="daily-min-tem">8°</span>
+                </div>
+    `;
+  });
+  dailyForecastHTML = dailyForecastHTML + `</div>`;
+  dailyForecastElement.innerHTML = dailyForecastHTML;
+  console.log(dailyForecastHTML);
+}
+getDailyForecast();
