@@ -87,6 +87,8 @@ function getCurrentTemperature(response) {
     api_sunrise,
     api_sunset
   );
+  getDailyForecast();
+  getHourlyForecast();
 }
 
 function initCurrentCityArea(
@@ -198,7 +200,8 @@ let tempInC = document.querySelector("#celsius");
 tempInC.addEventListener("click", fToC);
 requestApiByCity("Tokyo");
 
-function getHourlyForecast(hour) {
+function getHourlyForecast(response) {
+  //console.log(response.data.hourly);
   let hourlyForecastElement = document.querySelector("#forecast-by-hour");
   let hours = ["16:00", "17:00", "18:00", "19:00", "20:00"];
   let hourlyForecastHTML = `<div class = col>`;
@@ -220,12 +223,13 @@ function getHourlyForecast(hour) {
   });
   hourlyForecastHTML = hourlyForecastHTML + `</div>`;
   hourlyForecastElement.innerHTML = hourlyForecastHTML;
-  console.log(hourlyForecastHTML);
+  // console.log(hourlyForecastHTML);
 }
 
 getHourlyForecast();
 
 function getDailyForecast(day) {
+  //console.log(response.data.daily);
   let dailyForecastElement = document.querySelector("#forecast-by-day");
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let dailyForecastHTML = `<div class = col>`;
@@ -248,6 +252,18 @@ function getDailyForecast(day) {
   });
   dailyForecastHTML = dailyForecastHTML + `</div>`;
   dailyForecastElement.innerHTML = dailyForecastHTML;
-  console.log(dailyForecastHTML);
 }
-getDailyForecast();
+
+function displayHourlyForecast(coords) {
+  console.log(coords);
+  let apiKey = "809c5ab3e78d894a60211d95bd8050e5";
+  let apiUrl = `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(getHourlyForecast);
+}
+
+function displayDailyForecast(coords) {
+  //console.log(coords);
+  let apiKey = "809c5ab3e78d894a60211d95bd8050e5";
+  let apiUrl = `api.openweathermap.org/data/2.5/forecast/daily?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(getDailyForecast);
+}
