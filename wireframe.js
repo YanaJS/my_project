@@ -67,6 +67,7 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
 function getCurrentTemperature(response) {
+  console.log(response.data);
   let api_description = response.data.weather[0].description;
   let api_temp = Math.round(response.data.main.temp);
   let api_icon = response.data.weather[0].icon;
@@ -168,7 +169,7 @@ function error(err) {
 
 let btnLocation = document.querySelector("#current-location");
 btnLocation.addEventListener("click", getCurrentCoords);
-
+/*
 function cToF(event) {
   event.preventDefault();
   let cTemp = document.querySelector("#temp").innerText;
@@ -191,29 +192,27 @@ function fToC(event) {
   document.querySelector("#temp").innerHTML = `${fToCel}`;
 }
 
-//let tempInCelsius = null;
-
 let tempInF = document.querySelector("#fahrenheit");
 tempInF.addEventListener("click", cToF);
 
 let tempInC = document.querySelector("#celsius");
 tempInC.addEventListener("click", fToC);
+*/
 requestApiByCity("Tokyo");
 
 function getHourlyForecast(response) {
-  //console.log(response.data.hourly);
+  let hourlyForecast = response.data.hourly;
   let hourlyForecastElement = document.querySelector("#forecast-by-hour");
-  let hours = ["16:00", "17:00", "18:00", "19:00", "20:00"];
   let hourlyForecastHTML = `<div class = col>`;
-  hours.forEach(function (hour) {
+  hourlyForecast.forEach(function (hourlyF) {
     hourlyForecastHTML =
       hourlyForecastHTML +
       `
      <div class="row-2">
-                  <span class="hourly-time">${hour}</span>
+                  <span class="hourly-time">${hourlyF.dt}</span>
                   <span class="hourly-icon"
                     ><img
-                      src="https://openweathermap.org/img/wn/04d@2x.png"
+                      src="https://openweathermap.org/img/wn/${hourlyF.weather[0].icon}@2x.png"
                       alt=""
                       width="40px"
                   /></span>
@@ -223,32 +222,45 @@ function getHourlyForecast(response) {
   });
   hourlyForecastHTML = hourlyForecastHTML + `</div>`;
   hourlyForecastElement.innerHTML = hourlyForecastHTML;
-  // console.log(hourlyForecastHTML);
 }
 
-getHourlyForecast();
+//getHourlyForecast();
 
-function getDailyForecast(day) {
-  //console.log(response.data.daily);
+function dayFormat(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  return days[day];
+}
+
+function getDailyForecast(response) {
+  let dailyForecast = response.data.daily;
   let dailyForecastElement = document.querySelector("#forecast-by-day");
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let dailyForecastHTML = `<div class = col>`;
-  days.forEach(function (day) {
-    dailyForecastHTML =
-      dailyForecastHTML +
-      `
+  dailyForecast.forEach(function (dailyF, index) {
+    if (index < 6) {
+      dailyForecastHTML =
+        dailyForecastHTML +
+        `
      <div class="row-2">
-                  <span class="each-day">${day}</span>
+                  <span class="each-day">${dayFormat(dailyF.dt)}</span>
                   <span class="daily-icon"
                     ><img
-                      src="https://openweathermap.org/img/wn/01d@2x.png"
+                      src="https://openweathermap.org/img/wn/${
+                        dailyF.weather[0].icon
+                      }@2x.png"
                       alt=""
                       width="40px"
                   /></span>
-                  <span class="daily-max-temp">16°</span>
-                  <span class="daily-min-tem">8°</span>
+                  <span class="daily-max-temp">${Math.round(
+                    dailyF.temp.max
+                  )}°</span>
+                  <span class="daily-min-tem">${Math.round(
+                    dailyF.temp.min
+                  )}°</span>
                 </div>
     `;
+    }
   });
   dailyForecastHTML = dailyForecastHTML + `</div>`;
   dailyForecastElement.innerHTML = dailyForecastHTML;
