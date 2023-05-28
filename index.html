@@ -45,62 +45,40 @@
           <ul class="current-city-weather">
             <li class="city-name-area" id="city-name"></li>
             <li class="cloudy capitalize" id="temp-description"></li>
-            <li>
-              <img src="" alt="Cloudy" class="weather-icon" id="icon" />
-            </li>
             <li class="temp">
+              <span
+                ><img src="" alt="Cloudy" class="weather-icon" id="icon"
+              /></span>
               <span class="c-temp" id="temp"></span>
 
-              <span class="units"> °C</span>
+              <span class="unit"> °C</span>
             </li>
           </ul>
         </div>
         <div class="col-6">
-          <ul class="parameters">
+          <ol class="parameters">
             <li class="sunrise" id="sunrise">🌅 Sunrise: 06:22</li>
+
             <li class="sunset" id="sunset">🌆 Sunset: 19:55</li>
+
             <li class="wind">🌬 Wind:<span id="wind"></span>km/h</li>
+
             <li class="humidity">💧 Humidity: <span id="humidity"></span>%</li>
-          </ul>
+          </ol>
         </div>
       </div>
-      <div class="weather-forecast">
+      <hr />
+      <div class="daily-weather-forecast" id="forecast-by-day">
         <div class="row">
-          <hr />
-          <div class="col-6">
-            <h5 class="per-hour">Hourly</h5>
-            <div class="hourly-forecast" id="forecast-by-hour">
-              <div class="col">
-                <div class="row-2">
-                  <span class="hourly-time">16:00</span>
-                  <span class="hourly-icon"
-                    ><img
-                      src="https://openweathermap.org/img/wn/04d@2x.png"
-                      alt=""
-                      width="40px"
-                  /></span>
-                  <span class="hourly-temp">16°</span>
-                </div>
-              </div>
+          <div class="col-2">
+            <div class="each-day"></div>
+            <div class="daily-icon">
+              <img src="" alt="" />
             </div>
           </div>
-          <div class="col-6">
-            <h5 class="per-day">Daily</h5>
-            <div class="daily-forecast" id="forecast-by-day">
-              <div class="col">
-                <div class="row-2">
-                  <span class="each-day">Mon</span>
-                  <span class="daily-icon"
-                    ><img
-                      src="https://openweathermap.org/img/wn/01d@2x.png"
-                      alt=""
-                      width="40px"
-                  /></span>
-                  <span class="daily-max-temp">16°</span>
-                  <span class="daily-min-tem">8°</span>
-                </div>
-              </div>
-            </div>
+          <div class="daily-temperatures">
+            <span class="daily-max-temp"></span>
+            <span class="daily-min-temp"></span>
           </div>
         </div>
       </div>

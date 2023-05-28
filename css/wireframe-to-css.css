@@ -22,7 +22,7 @@ h1 {
   line-height: 23px;
   font-family: "Courier New", Courier, monospace;
   font-weight: bolder;
-  color: rgb(83, 62, 62);
+  color: rgba(39, 33, 66, 0.4);
 }
 
 .search {
@@ -40,17 +40,21 @@ h1 {
 }
 
 .city {
+  height: 50;
+  background: #f5f4f8;
+  border: none;
+  border-radius: 6.5px;
+  color: rgba(39, 33, 66, 0.4);
   display: block;
   margin: 0 auto;
   border: none;
   padding: 6px;
-  border-radius: 5px;
 }
 .btn-primary {
   border: none;
   padding: 6px;
   padding-right: 12px;
-  border-radius: 5px;
+  border-radius: 6.5px;
   margin-top: -59px;
   margin-right: 19px;
 }
@@ -59,55 +63,38 @@ h1 {
   border: none;
   padding: 6px;
   padding-right: 12px;
-  border-radius: 5px;
+  border-radius: 6.5px;
   margin-right: -500px;
   margin-top: -59px;
 }
 
 .parameters {
-  text-align: center;
+  display: inline-block;
+  margin: 0 30px;
   list-style: none;
   margin-right: 45px;
   padding-top: 5px;
-  font-size: 20px;
+  font-size: 17px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-style: italic;
-  color: rgb(83, 62, 62);
-  vertical-align: baseline;
+  color: rgba(7, 7, 7, 0.4);
+  line-height: 2;
 }
-.hourly {
-  list-style: none;
+.daily-weather-forecast {
   text-align: center;
-  color: blue;
-}
-
-.per-hour {
-  color: darkgray;
-}
-.daily {
-  list-style: none;
-  text-align: center;
-  color: brown;
 }
 
 .weather-icon {
   width: 120px;
-  margin-top: -37px;
-}
-.per-day {
-  color: cadetblue;
+  margin-top: -20px;
 }
 
 .city-name-area {
-  font-size: 40px;
+  font-size: 42px;
   font-weight: bold;
   padding: 0;
-  margin-top: -30px;
-}
-
-h5 {
-  text-align: center;
+  margin-top: -20px;
 }
 
 a {
@@ -118,7 +105,8 @@ a {
 .cloudy {
   font-size: 20px;
   font-weight: bold;
-  margin-top: -12px;
+  margin-top: 0;
+  color: rgba(39, 33, 66, 0.4);
 }
 .temp {
   font-size: 20px;
@@ -126,26 +114,20 @@ a {
 }
 
 .c-temp {
-  color: rgb(65, 53, 53);
-  font-size: 40px;
+  color: #2b2525;
+  font-size: 60px;
   font-weight: bold;
   line-height: 1;
-  margin-left: 25px;
-  margin-top: 30px;
+  margin-left: -13px;
 }
 
-.units {
+.unit {
+  font-size: 30px;
   position: relative;
-  top: -37px;
-  margin-left: 1px;
-}
-
-.active {
-  color: rgb(65, 53, 53);
-  cursor: default;
-}
-.active.hover {
-  text-decoration: none;
+  top: -22px;
+  margin-left: -4px;
+  line-height: 1;
+  font-weight: 500;
 }
 
 .capitalize {
@@ -158,10 +140,6 @@ a {
   font-weight: 400;
   line-height: 1.5;
   margin-left: 280px;
-}
-
-.hourly-forecast {
-  text-align: center;
 }
 
 .daily-forecast {
